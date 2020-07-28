@@ -336,6 +336,7 @@ enum CTokenSymbol @entity {
     cBAT
     cWBTC
     cUSDC
+    cUSDT
     cREP
 }
 
@@ -349,5 +350,6 @@ enum UnderlyingSymbol @entity {
     BAT
     WBTC
     USDC
+    USDT
     REP
 }
