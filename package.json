@@ -6,8 +6,8 @@
   "scripts": {
     "codegen": "graph codegen --output-dir src/types/",
     "build": "graph build",
-    "create-local": "graph create graphprotocol/compound-v2 --node http://127.0.0.1:8020",
-    "deploy-local": "graph deploy graphprotocol/compound-v2 --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "create-local": "graph create graphprotocol/compound-v2 --node http://graph-node:8020",
+    "deploy-local": "graph deploy graphprotocol/compound-v2 --debug --ipfs http://ipfs:5001 --node http://graph-node:8020/",
     "deploy": "graph deploy graphprotocol/compound-v2 --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "deploy-staging": "graph deploy --debug --ipfs https://api.staging.thegraph.com/ipfs/ --node https://api.staging.thegraph.com/deploy/ davekaj/compoundv2",
     "prettier": "./node_modules/.bin/prettier —-write '**/*.ts'"
