@@ -120,7 +120,7 @@ function getUSDTpriceETH(blockNumber: i32): BigDecimal {
       .toBigDecimal()
       .div(bdFactorUSDT)
   } else {
-   usdPrice = BigDecimal.fromString('0');
+   usdPrice = BigDecimal.fromString('0.0');
   }
 
   return usdPrice
@@ -137,7 +137,7 @@ export function createMarket(marketAddress: string): Market {
       '0x0000000000000000000000000000000000000000',
     )
     market.underlyingDecimals = 18
-    market.underlyingPrice = BigDecimal.fromString('1')
+    market.underlyingPrice = BigDecimal.fromString('1.0')
     market.underlyingName = 'Ether'
     market.underlyingSymbol = 'ETH'
 
@@ -155,7 +155,7 @@ export function createMarket(marketAddress: string): Market {
       market.underlyingSymbol = 'DAI'
     }
     if (marketAddress == cUSDCAddress) {
-      market.underlyingPriceUSD = BigDecimal.fromString('1')
+      market.underlyingPriceUSD = BigDecimal.fromString('1.0')
     }
   }
 
@@ -271,7 +271,7 @@ export function updateMarket(
     market.borrowRate = contract
       .borrowRatePerBlock()
       .toBigDecimal()
-      .times(BigDecimal.fromString('2102400'))
+      .times(BigDecimal.fromString('2102400.0'))
       .div(mantissaFactorBD)
       .truncate(mantissaFactor)
 
@@ -284,7 +284,7 @@ export function updateMarket(
     } else {
       market.supplyRate = supplyRatePerBlock.value
         .toBigDecimal()
-        .times(BigDecimal.fromString('2102400'))
+        .times(BigDecimal.fromString('2102400.0'))
         .div(mantissaFactorBD)
         .truncate(mantissaFactor)
     }

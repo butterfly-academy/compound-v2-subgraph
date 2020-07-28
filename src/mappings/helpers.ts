@@ -5,9 +5,9 @@ import { BigDecimal, Bytes, Address } from '@graphprotocol/graph-ts/index'
 import { AccountCToken, Account } from '../types/schema'
 
 export function exponentToBigDecimal(decimals: i32): BigDecimal {
-  let bd = BigDecimal.fromString('1')
+  let bd = BigDecimal.fromString('1.0')
   for (let i = 0; i < decimals; i++) {
-    bd = bd.times(BigDecimal.fromString('10'))
+    bd = bd.times(BigDecimal.fromString('10.0'))
   }
   return bd
 }
@@ -16,7 +16,7 @@ export let mantissaFactor = 18
 export let cTokenDecimals = 8
 export let mantissaFactorBD: BigDecimal = exponentToBigDecimal(18)
 export let cTokenDecimalsBD: BigDecimal = exponentToBigDecimal(8)
-export let zeroBD = BigDecimal.fromString('0')
+export let zeroBD = BigDecimal.fromString('0.0')
 
 export function createAccountCToken(
   cTokenStatsID: string,
