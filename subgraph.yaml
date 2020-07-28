@@ -235,7 +235,7 @@ dataSources:
   - kind: ethereum/contract
     name: cUSDC
     network: mainnet
-      source:
+    source:
       address: "0x39aa39c021dfbae8fac545936693ac917d5e7563"
       abi: CToken
       startBlock: 7700000
