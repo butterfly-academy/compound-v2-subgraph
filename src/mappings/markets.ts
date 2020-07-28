@@ -19,6 +19,7 @@ import {
 } from './helpers'
 
 let cUSDCAddress = '0x39aa39c021dfbae8fac545936693ac917d5e7563'
+let cUSDTAddress = '0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9'
 let cETHAddress = '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5'
 let daiAddress = '0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359'
 
@@ -100,6 +101,28 @@ function getUSDCpriceETH(blockNumber: i32): BigDecimal {
       .toBigDecimal()
       .div(mantissaFactorBD)
   }
+  return usdPrice
+}
+
+// Returns the price of USDC in eth. i.e. 0.005 would mean ETH is $200
+function getUSDTpriceETH(blockNumber: i32): BigDecimal {
+  let comptroller = Comptroller.load('1')
+  let oracleAddress = comptroller.priceOracle as Address
+  let usdPrice: BigDecimal
+
+  // See notes on block number if statement in getTokenPrices()
+  if (blockNumber > 7715908) {
+    let oracle2 = PriceOracle2.bind(oracleAddress)
+    let mantissaDecimalFactorUSDT = 18 - 6 + 18
+    let bdFactorUSDT = exponentToBigDecimal(mantissaDecimalFactorUSDT)
+    usdPrice = oracle2
+      .getUnderlyingPrice(Address.fromString(cUSDTAddress))
+      .toBigDecimal()
+      .div(bdFactorUSDT)
+  } else {
+   usdPrice = BigDecimal.fromString('0');
+  }
+
   return usdPrice
 }
 
